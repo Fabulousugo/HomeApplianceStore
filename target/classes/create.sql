@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS users(id integer constraint users_pk primary key autoincrement, username TEXT not null unique, password TEXT not null);
+CREATE TABLE IF NOT EXISTS customers(id integer constraint customers_pk primary key autoincrement, address1 TEXT not null, address2 TEXT, address3 TEXT, country TEXT not null, email TEXT not null unique, name TEXT not null, password TEXT not null, phone TEXT not null, postCode TEXT not null);
+CREATE TABLE IF NOT EXISTS products (id integer constraint products_pk primary key autoincrement, category TEXT not null, description TEXT not null, expiresOn TEXT not null, price integer default 0, sku TEXT not null, stock integer default 0);
+CREATE TABLE IF NOT EXISTS cart (customerId integer not null, productId integer not null, quantity integer default 0);
+CREATE TABLE IF NOT EXISTS orders (id integer constraint orders_pk primary key autoincrement, customerId integer not null, createdOn TEXT not null, orderNo TEXT not null);
+CREATE TABLE IF NOT EXISTS orderItems (orderId integer not null, productId integer not null, quantity integer default 0);
